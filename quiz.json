@@ -1,18 +1,21 @@
 {
-    "q_num": 2,
-    "q1":{
-        "text":"What is the capital of Italy?",
-        "ans":[
-            "Berlin",
-            "Rome",
-            "Paris"
-        ]
-    },
-    "q2":{
-        "text":"What is the tipical whether in Malta?",
-        "ans": [ 
-            "Sunny", 
-            "Cold"
-        ]
-    }
+    "questions":[
+        {
+            "name":"capital-of-italy",
+            "text":"What is the capital of Italy?",
+            "answers":[
+                "Berlin",
+                "Rome",
+                "Paris"
+            ]
+        },
+        {
+            "name":"weather-in-malta",
+            "text":"What is the tipical weather in Malta?",
+            "answers": [ 
+                "Sunny", 
+                "Cold"
+            ]
+        }
+    ]
 }

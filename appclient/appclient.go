@@ -20,18 +20,20 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+        "github.com/spf13/quiz-fasttrack-ettore-caprioli/game"
 )
 
 func RunClient() {
 
     // get the quiz
-    resp := http_get_call("http://localhost:8080/get-quiz")
-    fmt.Println("Response:\n", resp)
-
+    quiz := http_get_call("http://localhost:8080/get-quiz")
+    // fmt.Println("Response:\n", quiz)
 
     // run the quiz
+    answers := game.RunQuiz(quiz)
 
     // post the answers
+    http_post_call("http://localhost:8080/answer-quiz", answers)
 
 }
 
@@ -51,6 +53,7 @@ func http_get_call(url string) string {
     return string(body)
 }
 
-func http_post_call(url string) {
-
+func http_post_call(url string, body string) {
+    fmt.Println(url)
+    fmt.Println(body)
 }
