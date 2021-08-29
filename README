@@ -1,5 +1,16 @@
-Required:
+
+Example of usage:
+
   $0 client
   $0 server
 
+Modules:
 
+==> github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd
+  To handle the command line options etc.
+
+==> github.com/spf13/quiz-fasttrack-ettore-caprioli/appclient
+  The main module of the client
+
+==> github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver
+  The main module of the server
