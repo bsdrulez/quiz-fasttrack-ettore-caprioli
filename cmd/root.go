@@ -28,13 +28,16 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "quiz-fasttrack-ettore-caprioli",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "This application allow to run a test server and a client to take the quiz",
+	Long: `The main purpose of this application is to been able to take a quiz.
+        
+        This application is a single binary but has two distinct mode of operation:
+          - when operating as a 'server' its duety is to provide questions, check the
+            results and keep a list of scores
+          - when operating as a 'client' it provide the command-line interface for the 
+            user who wants to take the quiz.
+        
+        This is a development version and for now it operates only on localhost:8080.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },

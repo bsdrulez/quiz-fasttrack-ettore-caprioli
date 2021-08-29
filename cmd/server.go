@@ -24,13 +24,16 @@ import (
 // serverCmd represents the server command
 var serverCmd = &cobra.Command{
 	Use:   "server",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+        Short: "Start a server on localhost:8080 to let clients take the quiz",
+	Long: `The main purpose of this application is to been able to take a quiz.
+        
+        This application is a single binary but has two distinct mode of operation:
+          - when operating as a 'server' its duety is to provide questions, check the
+            results and keep a list of scores
+          - when operating as a 'client' it provide the command-line interface for the 
+            user who wants to take the quiz.
+        
+        This is a development version and for now it operates only on localhost:8080.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("server called")
 	},
