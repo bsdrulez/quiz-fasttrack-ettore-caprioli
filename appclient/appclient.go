@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+        "strings"
 	"net/http"
         "github.com/spf13/quiz-fasttrack-ettore-caprioli/game"
 )
@@ -55,5 +56,17 @@ func http_get_call(url string) string {
 }
 
 func http_post_call(url string, body string) {
-    fmt.Println("POST: ",body)
+    resp, err := http.Post(
+        url, "application/json", 
+        strings.NewReader(body))
+    if err != nil {
+    	print(err)
+    }
+    defer resp.Body.Close()
+    
+    b, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+    	print(err)
+    }
+    fmt.Println("POST RESPONSE: ", string(b))
 }

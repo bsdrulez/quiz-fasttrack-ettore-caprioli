@@ -20,11 +20,13 @@ import (
     "net/http"
     "io/ioutil"
     "log"
+    "encoding/json"
 )
 
 func RunServer() {
 
     http.HandleFunc("/get-quiz", get_quiz)
+    http.HandleFunc("/answer-quiz", answer_quiz)
 
     //fs := http.FileServer(http.Dir("static/"))
     //http.Handle("/static/", http.StripPrefix("/static/", fs))
@@ -35,6 +37,12 @@ func RunServer() {
 }
 
 func get_quiz(w http.ResponseWriter, r *http.Request) {
+
+    if r.Method != "GET" {
+        http.Error(w, "404 not found.", http.StatusNotFound)
+        return
+    }
+
     // fmt.Fprintln(w, "What number am I thinking right now?\n- 5\n- 8")
     content, err := ioutil.ReadFile("quiz.json")     // the file is inside the local directory
     if err != nil {
@@ -43,3 +51,27 @@ func get_quiz(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintln(w, string(content))
 }
 
+func answer_quiz(w http.ResponseWriter, r *http.Request) {
+
+
+    if r.Method != "POST" {
+        http.Error(w, "404 not found.", http.StatusNotFound)
+        return
+    }
+    
+    var ans = make(map[string]string)
+    //json.Unmarshal(r.Body, &ans)
+    decoder := json.NewDecoder(r.Body)
+    err := decoder.Decode(&ans)
+    if err != nil {
+        log.Fatal("Error: cannot decode json")
+    }
+
+    fmt.Println("capital-of-italy", ans["capital-of-italy"])
+    fmt.Println("weather-in-malta", ans["weather-in-malta"])
+
+    // TODO: check the answers from file
+    // TODO: handle the stats in memory
+    
+    fmt.Fprintln(w, "this is the answer")
+}
