@@ -11,7 +11,7 @@
         },
         {
             "name":"weather-in-malta",
-            "text":"What is the tipical weather in Malta?",
+            "text":"How is the tipical weather in Malta?",
             "answers": [ 
                 "Sunny", 
                 "Cold"
