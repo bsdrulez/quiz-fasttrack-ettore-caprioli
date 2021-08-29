@@ -18,7 +18,11 @@ package game
 import (
     "encoding/json"
     "fmt"
-//    "os"
+    "os"
+    "bufio"
+    "strconv"
+    "strings"
+    "log"
 )
 
 type question_st struct {
@@ -36,11 +40,18 @@ func RunQuiz(quiz_str string) string {
     
     var quiz quiz_st
     quiz = quiz_str2structure(quiz_str)
-    fmt.Println(string(quiz.Questions[0].Name))
     
     var ans = make(map[string]string)
-    ans["capital-of-italy"]="Rome"
-    ans["weather-in-malta"]="Sunny"
+    for i, q := range quiz.Questions {
+        fmt.Println("=== Question ", i, " ===\n", q.Text)
+        for j, a := range q.Answers {
+            fmt.Println(j, ") ", a)
+        }
+        fmt.Print("Insert the number of the correct answer: ")
+        choice := read_int()
+        ans[q.Name] = q.Answers[choice]
+    }
+
 
     return answer2str(ans)
 /*
@@ -58,12 +69,21 @@ func RunQuiz(quiz_str string) string {
 func quiz_str2structure(quiz_str string) quiz_st {
     res := quiz_st{}
     json.Unmarshal([]byte(quiz_str), &res)
-    //fmt.Println(res)
-    //fmt.Println(res.Questions[0].Name)
     return res
 }
 
 func answer2str(ans map[string]string) string {
     ans_json, _ := json.Marshal(ans)
     return string(ans_json)
+}
+
+func read_int() int {
+    reader := bufio.NewReader(os.Stdin)
+    str, _ := reader.ReadString('\n')
+    str = strings.Replace(str,"\n","",-1)
+    num, e := strconv.Atoi(str)
+    if e != nil {
+        log.Fatal("Error: cannot read number")
+    }
+    return num
 }

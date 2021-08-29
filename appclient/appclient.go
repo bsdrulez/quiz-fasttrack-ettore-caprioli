@@ -24,16 +24,17 @@ import (
 )
 
 func RunClient() {
+    host_and_port := "http://localhost:8080"
 
     // get the quiz
-    quiz := http_get_call("http://localhost:8080/get-quiz")
+    quiz := http_get_call(host_and_port+"/get-quiz")
     // fmt.Println("Response:\n", quiz)
 
     // run the quiz
     answers := game.RunQuiz(quiz)
 
     // post the answers
-    http_post_call("http://localhost:8080/answer-quiz", answers)
+    http_post_call(host_and_port+"/answer-quiz", answers)
 
 }
 
@@ -54,6 +55,5 @@ func http_get_call(url string) string {
 }
 
 func http_post_call(url string, body string) {
-    fmt.Println(url)
-    fmt.Println(body)
+    fmt.Println("POST: ",body)
 }
