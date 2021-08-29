@@ -1,0 +1,18 @@
+{
+    "q_num": 2,
+    "q1":{
+        "text":"What is the capital of Italy?",
+        "ans":[
+            "Berlin",
+            "Rome",
+            "Paris"
+        ]
+    },
+    "q2":{
+        "text":"What is the tipical whether in Malta?",
+        "ans": [ 
+            "Sunny", 
+            "Cold"
+        ]
+    }
+}

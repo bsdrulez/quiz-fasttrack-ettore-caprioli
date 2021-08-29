@@ -4,6 +4,10 @@ Example of usage:
   $0 client
   $0 server
 
+JSON-REST request:
+    GET         http://localhost:8080/get-quiz
+    POST        http://localhost:8080/answer-quiz
+
 Modules:
 
 ==> github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd
