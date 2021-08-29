@@ -13,44 +13,25 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package appclient
+package appserver
 
 import (
-	"fmt"
-	"io/ioutil"
-	"log"
-	"net/http"
+    "fmt"
+    "net/http"
 )
 
-func RunClient() {
+func RunServer() {
 
-    // get the quiz
-    resp := http_get_call("http://localhost:8080/get-quiz")
-    fmt.Println("Response:\n", resp)
+    http.HandleFunc("/get-quiz", get_quiz)
 
-
-    // run the quiz
-
-    // post the answers
-
+    //fs := http.FileServer(http.Dir("static/"))
+    //http.Handle("/static/", http.StripPrefix("/static/", fs))
+    var host_and_port string = "127.0.0.1:8080";
+    fmt.Println("Listening on "+host_and_port)
+    http.ListenAndServe(host_and_port, nil)
 }
 
-func http_get_call(url string) string {
-
-    resp, err := http.Get(url)
-    if err != nil {
-        log.Fatal("Error getting response. ", err)
-    }
-    defer resp.Body.Close()
-    
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        log.Fatal("Error reading response. ", err)
-    }
-    
-    return string(body)
+func get_quiz(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintln(w, "What number am I thinking right now?\n- 5\n- 8")
 }
 
-func http_post_call(url string) {
-
-}

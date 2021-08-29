@@ -16,9 +16,10 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
+//	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver"
 )
 
 // serverCmd represents the server command
@@ -35,7 +36,8 @@ var serverCmd = &cobra.Command{
         
         This is a development version and for now it operates only on localhost:8080.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("server called")
+		// fmt.Println("server called")
+                appserver.RunServer()
 	},
 }
 

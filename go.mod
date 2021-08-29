@@ -6,6 +6,8 @@ replace github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd => ./cmd
 
 replace github.com/spf13/quiz-fasttrack-ettore-caprioli/appclient => ./appclient
 
+replace github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver => ./appserver
+
 require github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd v0.0.0-00010101000000-000000000000
 
 require (
@@ -21,6 +23,7 @@ require (
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/quiz-fasttrack-ettore-caprioli/appclient v0.0.0-00010101000000-000000000000 // indirect
+	github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver v0.0.0-00010101000000-000000000000 // indirect
 	github.com/spf13/viper v1.8.1 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
 	golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
