@@ -21,6 +21,7 @@ import (
     "io/ioutil"
     "log"
     "encoding/json"
+    "strconv"
 )
 
 func RunServer() {
@@ -42,13 +43,9 @@ func get_quiz(w http.ResponseWriter, r *http.Request) {
         http.Error(w, "404 not found.", http.StatusNotFound)
         return
     }
-
-    // fmt.Fprintln(w, "What number am I thinking right now?\n- 5\n- 8")
-    content, err := ioutil.ReadFile("quiz.json")     // the file is inside the local directory
-    if err != nil {
-        log.Fatal("Error: cannot read the file quiz.json")
-    }
-    fmt.Fprintln(w, string(content))
+    
+    quiz := read_all_file_as_string("quiz.json")
+    fmt.Fprintln(w, quiz)
 }
 
 func answer_quiz(w http.ResponseWriter, r *http.Request) {
@@ -60,18 +57,43 @@ func answer_quiz(w http.ResponseWriter, r *http.Request) {
     }
     
     var ans = make(map[string]string)
-    //json.Unmarshal(r.Body, &ans)
     decoder := json.NewDecoder(r.Body)
     err := decoder.Decode(&ans)
     if err != nil {
         log.Fatal("Error: cannot decode json")
     }
 
-    fmt.Println("capital-of-italy", ans["capital-of-italy"])
-    fmt.Println("weather-in-malta", ans["weather-in-malta"])
-
-    // TODO: check the answers from file
-    // TODO: handle the stats in memory
+    result := check_answers(ans)
     
-    fmt.Fprintln(w, "this is the answer")
+    fmt.Fprintln(w, result)
+}
+
+func check_answers(ans map[string]string) string {
+    correct_ans_str := read_all_file_as_string("answers.json")
+    var correct_ans = make(map[string]string)
+    json.Unmarshal([]byte(correct_ans_str), &correct_ans)
+
+    var corr int = 0
+    var tot int = 0
+    for key, val := range correct_ans {
+        if val == ans[key] {
+            corr++
+        }
+        tot++
+    }
+    
+    var result string
+    result = "Your score is "+strconv.Itoa(corr)+"/"+strconv.Itoa(tot)+"\n"
+    
+    // TODO: check stats
+
+    return result
+}
+
+func read_all_file_as_string(filename string) string {
+    content, err := ioutil.ReadFile(filename)     // the file is inside the local directory
+    if err != nil {
+        log.Fatal("Error: cannot read the file quiz.json")
+    }
+    return string(content)
 }

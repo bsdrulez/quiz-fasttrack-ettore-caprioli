@@ -18,3 +18,7 @@ Modules:
 
 ==> github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver
   The main module of the server
+
+Point to improve:
+- multithreading handling of calls
+- error handling
