@@ -22,6 +22,7 @@ import (
     "log"
     "encoding/json"
     "strconv"
+    "github.com/spf13/quiz-fasttrack-ettore-caprioli/rank"
 )
 
 func RunServer() {
@@ -85,7 +86,10 @@ func check_answers(ans map[string]string) string {
     var result string
     result = "Your score is "+strconv.Itoa(corr)+"/"+strconv.Itoa(tot)+"\n"
     
-    // TODO: check stats
+    
+    percentage := rank.InsertScore(corr)
+    result = result + "You scored higher than "+
+                strconv.Itoa(percentage)+"% of all quizzers"
 
     return result
 }

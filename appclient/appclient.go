@@ -68,5 +68,5 @@ func http_post_call(url string, body string) {
     if err != nil {
     	print(err)
     }
-    fmt.Println("POST RESPONSE: ", string(b))
+    fmt.Println(string(b))
 }

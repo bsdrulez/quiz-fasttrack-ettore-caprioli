@@ -10,6 +10,8 @@ replace github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver => ./appserver
 
 replace github.com/spf13/quiz-fasttrack-ettore-caprioli/game => ./game
 
+replace github.com/spf13/quiz-fasttrack-ettore-caprioli/rank => ./rank
+
 require (
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
@@ -22,10 +24,6 @@ require (
 	github.com/spf13/cobra v1.2.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/quiz-fasttrack-ettore-caprioli/appclient v0.0.0-00010101000000-000000000000 // indirect
-	github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver v0.0.0-00010101000000-000000000000 // indirect
-        github.com/spf13/quiz-fasttrack-ettore-caprioli/game v0.0.0-00010101000000-000000000000 // indirect
-	github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd v0.0.0-00010101000000-000000000000
 	github.com/spf13/viper v1.8.1 // indirect
 	github.com/subosito/gotenv v1.2.0 // indirect
 	golang.org/x/sys v0.0.0-20210510120138-977fb7262007 // indirect
@@ -34,3 +32,12 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
+require github.com/spf13/quiz-fasttrack-ettore-caprioli/appclient v0.0.0-00010101000000-000000000000 // indirect
+
+require github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver v0.0.0-00010101000000-000000000000 // indirect
+
+require github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd v0.0.0-00010101000000-000000000000
+
+require github.com/spf13/quiz-fasttrack-ettore-caprioli/game v0.0.0-00010101000000-000000000000 // indirect
+
+require github.com/spf13/quiz-fasttrack-ettore-caprioli/rank v0.0.0-00010101000000-000000000000 // indirect
