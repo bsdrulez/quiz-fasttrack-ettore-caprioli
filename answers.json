@@ -1,5 +1,8 @@
 {
     "capital-of-italy":"Rome",
-    "weather-in-malta":"Sunny"
+    "weather-in-malta":"Sunny",
+    "it-guys-like-cats":"yes",
+    "integral-of-x":"0.5 * x^2",
+    "newton-s-2nd-law":"F = m * a"
 }
 

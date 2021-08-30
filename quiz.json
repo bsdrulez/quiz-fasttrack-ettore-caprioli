@@ -16,6 +16,33 @@
                 "Sunny", 
                 "Cold"
             ]
+        },
+        {
+            "name":"it-guys-like-cats",
+            "text":"Is it true that most IT guys like cats?",
+            "answers": [ 
+                "yes", 
+                "no"
+            ]
+        },
+        {
+            "name":"integral-of-x",
+            "text":"The integral of x in dx is:",
+            "answers": [ 
+                "x^2", 
+                "0.5 * x^2",
+                "1",
+                "x"
+            ]
+        },
+        {
+            "name":"newton-s-2nd-law",
+            "text":"What is the second law of Newton?",
+            "answers": [ 
+                "F = m * a", 
+                "F_12 = -1 * F_21",
+                "F = 1/2 * k * x^2"
+            ]
         }
     ]
 }
