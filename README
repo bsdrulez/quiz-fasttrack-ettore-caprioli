@@ -1,24 +1,44 @@
 
-Example of usage:
+--- Example of usage ---
 
-  $0 client
-  $0 server
+  go run main.go server
+  go run main.go client
+or
+  ./quiz-fasttrack-ettore-caprioli server
+  ./quiz-fasttrack-ettore-caprioli client
 
-JSON-REST request:
+
+--- JSON-REST request ---
+
     GET         http://localhost:8080/get-quiz
     POST        http://localhost:8080/answer-quiz
 
-Modules:
+
+--- Modules ---
 
 ==> github.com/spf13/quiz-fasttrack-ettore-caprioli/cmd
-  To handle the command line options etc.
+  To handle the command line interfaces
 
 ==> github.com/spf13/quiz-fasttrack-ettore-caprioli/appclient
-  The main module of the client
+  The main module of the client (make the HTTP calls)
 
 ==> github.com/spf13/quiz-fasttrack-ettore-caprioli/appserver
-  The main module of the server
+  The main module of the server (listen and handle the HTTP calls)
 
-Point to improve:
-- multithreading handling of calls
-- error handling
+==>github.com/spf13/quiz-fasttrack-ettore-caprioli/game
+  To present a text based interface where the player can play
+
+==>github.com/spf13/quiz-fasttrack-ettore-caprioli/rank
+  Keep track of the list of scores of the people who took the quiz
+  and on each insert, give also how that score compare with the others
+
+
+--- Point to improve ---
+
+- Make IP address and TCP port  as Flags (both in client and server)
+- Use multithreading to handle multiple clients at once
+- Improve how error has been handled
+- Add automatic tests
+- Add documentation in the source code (and maybe some simple comment)
+
+
